@@ -1,0 +1,16 @@
+Metadata-Version: 1.0
+Name: gsheet-io
+Version: .1
+Summary: tools for reading spreadsheets on google into flatfiles & datbase
+Home-page: http://github.com/bh0085/gsheet-io
+Author: Ben Holmes
+Author-email: ben@aeronaut.net
+License: MIT
+Description: # gsheets-io
+        
+        
+        
+        default share email (used by ben):
+        untappd-python-reporting@polished-bounty-162720.iam.gserviceaccount.com 
+Keywords: aeronaut
+Platform: UNKNOWN

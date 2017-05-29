@@ -1,0 +1,4 @@
+sqlalchemy
+dateparser
+gspread
+oauth2client

@@ -1,0 +1,7 @@
+get-google-sheet.py
+setup.py
+gsheet_io.egg-info/PKG-INFO
+gsheet_io.egg-info/SOURCES.txt
+gsheet_io.egg-info/dependency_links.txt
+gsheet_io.egg-info/requires.txt
+gsheet_io.egg-info/top_level.txt
