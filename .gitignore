@@ -1,3 +1,5 @@
 google-key.json
 *.db
 venv
+*.json
+*.sqlite

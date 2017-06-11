@@ -42,6 +42,8 @@ from sqlalchemy.orm import mapper, create_session
 class Row(object):
     pass
 
+
+
 def store_sqlite(data,outfile, header_rows = 1, cols = None, types = None, indexes=None,tablename=None):
     engine = create_engine('sqlite:///'+outfile)
     metadata = MetaData(bind=engine)
@@ -49,7 +51,8 @@ def store_sqlite(data,outfile, header_rows = 1, cols = None, types = None, index
     types_map = {
         "text": Unicode(255),
         "number": Numeric(),
-        "date":Date()
+        "date":Date(),
+        "int":Integer()
     }
 
     
@@ -86,7 +89,7 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--output, -o', dest="output", required=True, help='output file')
-    parser.add_argument('--sqlite', default=True, action="store_const", const=True, help="create a sqlite database instead of a flat file")
+    parser.add_argument('--sqlite', default=False, action="store_const", const=True, help="create a sqlite database instead of a flat file")
     parser.add_argument('--sheet, -s', dest="sheet",help='google spreadsheet workbook key', default="1WWOD92D7SvCVh2Hlu-0dyyuIOctn7UMVMSOPoFBbGgI")
     parser.add_argument('--name, -n', dest="name", help='google speadsheet page name', default="DATABASE")
     parser.add_argument('--header-rows',dest="h_rows", help='n header rows', type=int, default = 2)
@@ -116,4 +119,15 @@ if __name__=="__main__":
                      tablename = args.tablename)
         
     else:
-        print_json(args.sheet, args.name, args.outfile)
+        cells =get_cells(args.sheet, args.name)
+        with open(args.output, 'w') as f:
+            f.write(json.dumps(cells[args.h_rows - 1:]))
+        
+      #  print_json2(cells,
+       ##             args.output,
+        #            cols = cols,
+         #           indexes = indexes,
+          #          types = types,
+           #         header_rows=args.h_rows,
+            #        tablename = args.tablename)
+        #print_json(args.sheet, args.name, args.outfile)
